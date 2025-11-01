@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Reshagrantha Architects</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      /* allow scroll for large images */
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      display: block;
+      margin: 20px auto;
+      width: auto;
+      height: 80vh;
+      /* center image */
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 99;
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 40px;
+      user-select: none;
+      transform: translateY(-50%);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    #caption {
+      text-align: center;
+      color: #fff;
+      padding: 10px 0;
+    }
+
+    a.tile {
+      position: absolute;
+      right: 50px;
+      font-size: 24px;
+      top: calc(50% - 14px);
+      color:
+        color-mix(in srgb, var(--default-color), transparent 30%);
+      transition: 0.3s;
+      line-height: 0;
+    }
+  </style>
+  <!-- =======================================================
+  * Template Name: Company
+  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="portfolio-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt="" style="width: 100px;height:100px;"> -->
+        <!-- <h1 class="sitename">Company</h1><span>.</span> -->
+        <div
+          style="background-image: url('assets/img/logo.png');background-repeat: no-repeat;width: 100px;height: 100px;display: block;background-size: contain;">
+        </div>
+        <div style="position: relative;top: 30px;left: -25px;text-transform: uppercase;font-weight: 400;">Reshagrantha
+          Architects</div>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html"><span>About</span></a>
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html" class="active">Portfolio</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <!-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> -->
+        <a target="_blank" href="https://www.instagram.com/reshagrantha?igsh=MTc0OTYxZWU1aTZyeA==" class="instagram"><i
+            class="bi bi-instagram"></i></a>
+        <!-- <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> -->
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up" style="padding-bottom: 35px;">
+        <h2>Portfolio</h2>
+        <p>Some Of Our Wonderful Projects</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-AR">ARCHITECTURE</li>
+            <li data-filter=".filter-INT">INTERIOR</li>
+            <li data-filter=".filter-ARCON">ARCHITECTURAL CONSERVATION</li>
+            <li data-filter=".filter-LANDSCAPE">LANDSCAPE</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery0" src="assets/img/portfolio/1. Rudrana/cover.JPG" class="img-fluid"
+                alt="RUDRANA RESTAURANT">
+              <div class="portfolio-info">
+                <h4>RUDRANA RESTAURANT</h4>
+                <p>WAI, SATARA</p>
+
+                <!-- Tile to open gallery -->
+                <a href="#" class="tile" data-gallery="gallery0" data-index="0">
+                  <i class="bi bi-zoom-in"></i>
+                </a>
+
+                <a href="portfolio-details.html?gallery=gallery0" title="More Details" class="details-link">
+                  <i class="bi bi-link-45deg"></i>
+                </a>
+              </div>
+            </div>
+            <!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery1" src="assets/img/portfolio/2. Ferro/cover.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>FERRO HOUSE</h4>
+                <p>MARGASANI, BHOR, PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery1" data-index="1"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery1" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery2" src="assets/img/portfolio/3. blooming school/cover.png" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>BLOOMING INTERNATIONAL SCHOOL</h4>
+                <p>GAHUNJE , PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery2" data-index="2"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery2" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery3" src="assets/img/portfolio/4. Sahani/SAHANI VILLA COVER.png" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>SAHANI VILLA</h4>
+                <p>MAHABALESHWAR</p>
+                <a href="#" class="tile" data-gallery="gallery3" data-index="3"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery3" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery4" src="assets/img/portfolio/5. WADA , KAMSHET/COVER.png" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>WADA</h4>
+                <p>KAMSHET</p>
+                <a href="#" class="tile" data-gallery="gallery4" data-index="4"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery4" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery5" src="assets/img/portfolio/6. Sakshi Nisarg/cover.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>SAKSHI NISARG TOWNSHIP</h4>
+                <p>WAI, SATARA</p>
+                <a href="#" class="tile" data-gallery="gallery5" data-index="5"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery5" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
+              <img data-gallery="gallery6" src="assets/img/portfolio/7. Grace Villa/cover.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>GRACE VILLA</h4>
+                <p>PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery6" data-index="6"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery6" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-INT">
+              <img data-gallery="gallery7" src="assets/img/portfolio/8. BAVDHAN - Bisure Interior/cover.JPG"
+                class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>4BHK</h4>
+                <p>BAVDHAN, PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery7" data-index="7"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery7" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-INT">
+              <img data-gallery="gallery8" src="assets/img/portfolio/9. Balewadi Interior/cover.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>2BHK</h4>
+                <p>BALEWADI, PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery8" data-index="8"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery8" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-INT">
+              <img data-gallery="gallery9" src="assets/img/portfolio/10. Vaidya Interior/cover.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>VAIDYA HOUSE</h4>
+                <p>PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery9" data-index="9"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery9" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-LANDSCAPE">
+              <img data-gallery="gallery10" src="assets/img/portfolio/11.ROHAN KRITIKA-/COVER.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>INTEGRATED BALCONY DESIGN</h4>
+                <p>ROHAN KRITIKA, PUNE</p>
+                <a href="#" class="tile" data-gallery="gallery10" data-index="10"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery10" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
+              <img data-gallery="gallery11" src="assets/img/portfolio/C1.AGALESHWAR TEMPLE/COVER.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>AGALESHWAR TEMPLE</h4>
+                <p>AGALGAON, SANGLI</p>
+                <a href="#" class="tile" data-gallery="gallery11" data-index="11"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery11" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
+              <img data-gallery="gallery12" src="assets/img/portfolio/C2.BELANKI TEMPLE/COVER.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>MAHADEV TEMPLE</h4>
+                <p>BELANKI, SANGLI</p>
+                <a href="#" class="tile" data-gallery="gallery12" data-index="12"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery12" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
+              <img data-gallery="gallery13" src="assets/img/portfolio/C3.IRALI TEMPLE/COVER.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>MAHADEV TEMPLE</h4>
+                <p>IRALI, SANGLI</p>
+                <a href="#" class="tile" data-gallery="gallery13" data-index="13"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery13" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/portfolio/C4.KUCHI TEMPLE/COVER.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="assets/img/portfolio/C4.KUCHI TEMPLE/COVER.jpg" title="Branding 2"
+                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>End Portfolio Item -->
+            <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/portfolio/C6.ROHIDA FORT/COVER.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="assets/img/portfolio/C6.ROHIDA FORT/COVER.jpg" title="Branding 2"
+                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>End Portfolio Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
+              <img data-gallery="gallery14" src="assets/img/portfolio/C7.RANGANA FORT/COVER.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>RANGANA FORT</h4>
+                <p>KOLHAPUR</p>
+                <a href="#" class="tile" data-gallery="gallery14" data-index="14"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery14" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-LANDSCAPE">
+              <img data-gallery="gallery16" src="assets/img/portfolio/12.RUDRANA RESTAURANT/COVER.jpg" class="img-fluid"
+                alt="">
+              <div class="portfolio-info">
+                <h4>RUDRANA RESTAURANT</h4>
+                <p>WAI, SATARA</p>
+                <a href="#" class="tile" data-gallery="gallery16" data-index="16"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery16" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/portfolio/CONSERVATION - WEAPON, PAINTING, PAPER/1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="#" class="tile" data-gallery="gallery15" data-index="15"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html?gallery=gallery15" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>End Portfolio Item -->
+            <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="assets/img/portfolio/C1.AGALESHWAR TEMPLE/COVER.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="assets/img/portfolio/C1.AGALESHWAR TEMPLE/COVER.jpg" title="Branding 2"
+                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>End Portfolio Item -->
+
+          </div><!-- End Portfolio Container -->
+
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Our Office</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p><a target="_blank" style="color: white;"
+                href="https://google.com/maps?rlz=1C1CHZL_enIN1143IN1143&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEHNTM1ajBqNKgCALACAQ&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=Kc-TrWGrv8I7MU-_xoCsSyg3&daddr=S.No.+32/1A/1/30+to+38+%26+54,+Pancard+Club+Rd,+Baner,+Pune,+Maharashtra+411069"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                </svg> 302 Cresent Park, Westport Business lane,
+                Pancard road,
+                Baner, Pune 411045
+              </a></p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+91 9527548995</span></p>
+            <p><strong>Email:</strong> <span>reshagrantha@gmail.com</span></p>
+            <p style="font-size: 11px; color: #aaa; margin-top: 5px;">
+              Designed by <a style="color: #aaa;" href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a>
+              Distributed by <a style="color: #aaa;" href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+            </p>
+
+          </div>
+          <div class="social-links d-flex mt-4">
+            <!-- <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a> -->
+            <a target="_blank" href="https://www.instagram.com/reshagrantha?igsh=MTc0OTYxZWU1aTZyeA=="
+              class="instagram"><i class="bi bi-instagram"></i></a>
+            <!-- <a href=""><i class="bi bi-linkedin"></i></a> -->
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Architecture</a></li>
+            <li><a href="services.html">Interior</a></li>
+            <li><a href="services.html">Landscape</a></li>
+            <li><a href="services.html">Architectural Conservation</a></li>
+            <li><a href="services.html">Art Conservation</a></li>
+            <li><a href="services.html">Art Installtion</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-3 footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  <div id="customModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </div>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const galleries = {
+        gallery0: [
+          { src: "assets/img/portfolio/1.%20Rudrana/1.JPG", title: "RUDRANA RESTAURANT" },
+          { src: "assets/img/portfolio/1.%20Rudrana/2.JPG", title: "RUDRANA RESTAURANT" },
+          { src: "assets/img/portfolio/1.%20Rudrana/3.JPG", title: "RUDRANA RESTAURANT" },
+          { src: "assets/img/portfolio/1.%20Rudrana/4.JPG", title: "RUDRANA RESTAURANT" },
+          { src: "assets/img/portfolio/1.%20Rudrana/5.JPG", title: "RUDRANA RESTAURANT" },
+          { src: "assets/img/portfolio/1.%20Rudrana/6.JPG", title: "RUDRANA RESTAURANT" }
+        ],
+        gallery1: [
+          { src: "assets/img/portfolio/2.%20Ferro/1.JPG", title: "FERRO HOUSE" },
+          { src: "assets/img/portfolio/2.%20Ferro/2.JPG", title: "FERRO HOUSE" },
+          { src: "assets/img/portfolio/2.%20Ferro/3.JPG", title: "FERRO HOUSE" },
+          { src: "assets/img/portfolio/2.%20Ferro/4.JPG", title: "FERRO HOUSE" },
+          { src: "assets/img/portfolio/2.%20Ferro/5.JPG", title: "FERRO HOUSE" }
+        ],
+        gallery2: [
+          { src: "assets/img/portfolio/3. blooming school/1.PNG", title: "BLOOMING INTERNATIONAL SCHOOL" },
+          { src: "assets/img/portfolio/3. blooming school/2.PNG", title: "BLOOMING INTERNATIONAL SCHOOL" },
+          { src: "assets/img/portfolio/3. blooming school/3.PNG", title: "BLOOMING INTERNATIONAL SCHOOL" }
+        ],
+        gallery3: [
+          { src: "assets/img/portfolio/4. Sahani/1.png", title: "SAHANI VILLA" },
+          { src: "assets/img/portfolio/4. Sahani/2.jpg", title: "SAHANI VILLA" },
+          { src: "assets/img/portfolio/4. Sahani/3.jpg", title: "SAHANI VILLA" },
+          { src: "assets/img/portfolio/4. Sahani/4.jpg", title: "SAHANI VILLA" },
+          { src: "assets/img/portfolio/4. Sahani/5.jpg", title: "SAHANI VILLA" }
+        ],
+        gallery4: [
+          { src: "assets/img/portfolio/5. WADA , KAMSHET/1.png", title: "WADA" },
+          { src: "assets/img/portfolio/5. WADA , KAMSHET/2.png", title: "WADA" },
+          { src: "assets/img/portfolio/5. WADA , KAMSHET/3.png", title: "WADA" },
+          { src: "assets/img/portfolio/5. WADA , KAMSHET/4.png", title: "WADA" },
+          { src: "assets/img/portfolio/5. WADA , KAMSHET/5.png", title: "WADA" }
+        ],
+        gallery5: [
+          { src: "assets/img/portfolio/6. Sakshi Nisarg/1.jpg", title: "SAKSHI NISARG TOWNSHIP" },
+          { src: "assets/img/portfolio/6. Sakshi Nisarg/2.jpg", title: "SAKSHI NISARG TOWNSHIP" },
+          { src: "assets/img/portfolio/6. Sakshi Nisarg/3.jpg", title: "SAKSHI NISARG TOWNSHIP" }
+        ],
+        gallery6: [
+          { src: "assets/img/portfolio/7. Grace Villa/1.jpg", title: "GRACE VILLA" },
+          { src: "assets/img/portfolio/7. Grace Villa/2.jpg", title: "GRACE VILLA" },
+          { src: "assets/img/portfolio/7. Grace Villa/3.jpg", title: "GRACE VILLA" }
+        ],
+        gallery7: [
+          { src: "assets/img/portfolio/8. BAVDHAN - Bisure Interior/1.jpg", title: "4BHK" },
+          { src: "assets/img/portfolio/8. BAVDHAN - Bisure Interior/2.jpg", title: "4BHK" },
+          { src: "assets/img/portfolio/8. BAVDHAN - Bisure Interior/3.jpg", title: "4BHK" },
+          { src: "assets/img/portfolio/8. BAVDHAN - Bisure Interior/4.jpg", title: "4BHK" },
+          { src: "assets/img/portfolio/8. BAVDHAN - Bisure Interior/5.jpg", title: "4BHK" },
+          { src: "assets/img/portfolio/8. BAVDHAN - Bisure Interior/6.jpg", title: "4BHK" }
+        ],
+        gallery8: [
+          { src: "assets/img/portfolio/9. Balewadi Interior/1.jpg", title: "2BHK" },
+          { src: "assets/img/portfolio/9. Balewadi Interior/2.jpg", title: "2BHK" },
+          { src: "assets/img/portfolio/9. Balewadi Interior/3.jpg", title: "2BHK" },
+          { src: "assets/img/portfolio/9. Balewadi Interior/4.jpg", title: "2BHK" }
+        ],
+        gallery9: [
+          { src: "assets/img/portfolio/10. Vaidya Interior/1.jpg", title: "VAIDYA HOUSE" },
+          { src: "assets/img/portfolio/10. Vaidya Interior/2.jpg", title: "VAIDYA HOUSE" },
+          { src: "assets/img/portfolio/10. Vaidya Interior/3.jpg", title: "VAIDYA HOUSE" },
+          { src: "assets/img/portfolio/10. Vaidya Interior/4.jpg", title: "VAIDYA HOUSE" },
+          { src: "assets/img/portfolio/10. Vaidya Interior/5.jpg", title: "VAIDYA HOUSE" },
+          { src: "assets/img/portfolio/10. Vaidya Interior/6.jpg", title: "VAIDYA HOUSE" },
+          { src: "assets/img/portfolio/10. Vaidya Interior/7.jpg", title: "VAIDYA HOUSE" }
+        ],
+        gallery10: [
+          { src: "assets/img/portfolio/11.ROHAN KRITIKA-/1.jpg", title: "INTEGRATED BALCONY DESIGN" },
+          { src: "assets/img/portfolio/11.ROHAN KRITIKA-/2.jpg", title: "INTEGRATED BALCONY DESIGN" },
+          { src: "assets/img/portfolio/11.ROHAN KRITIKA-/3.jpg", title: "INTEGRATED BALCONY DESIGN" },
+          { src: "assets/img/portfolio/11.ROHAN KRITIKA-/4.jpg", title: "INTEGRATED BALCONY DESIGN" },
+          { src: "assets/img/portfolio/11.ROHAN KRITIKA-/5.jpg", title: "INTEGRATED BALCONY DESIGN" }
+        ],
+        gallery11: [
+          { src: "assets/img/portfolio/C1.AGALESHWAR TEMPLE/1.jpg", title: "AGALESHWAR TEMPLE" },
+          { src: "assets/img/portfolio/C1.AGALESHWAR TEMPLE/2.jpg", title: "AGALESHWAR TEMPLE" },
+          { src: "assets/img/portfolio/C1.AGALESHWAR TEMPLE/3.jpg", title: "AGALESHWAR TEMPLE" },
+          { src: "assets/img/portfolio/C1.AGALESHWAR TEMPLE/4.jpg", title: "AGALESHWAR TEMPLE" },
+        ],
+        gallery12: [
+          { src: "assets/img/portfolio/C2.BELANKI TEMPLE/1.jpg", title: "MAHADEV TEMPLE" },
+          { src: "assets/img/portfolio/C2.BELANKI TEMPLE/2.jpg", title: "MAHADEV TEMPLE" },
+          { src: "assets/img/portfolio/C2.BELANKI TEMPLE/3.jpg", title: "MAHADEV TEMPLE" },
+          { src: "assets/img/portfolio/C2.BELANKI TEMPLE/4.jpg", title: "MAHADEV TEMPLE" },
+        ],
+        gallery13: [
+          { src: "assets/img/portfolio/C3.IRALI TEMPLE/1.jpg", title: "MAHADEV TEMPLE" },
+          { src: "assets/img/portfolio/C3.IRALI TEMPLE/2.jpg", title: "MAHADEV TEMPLE" },
+          { src: "assets/img/portfolio/C3.IRALI TEMPLE/3.jpg", title: "MAHADEV TEMPLE" },
+          { src: "assets/img/portfolio/C3.IRALI TEMPLE/4.jpg", title: "MAHADEV TEMPLE" },
+        ],
+        gallery14: [
+          { src: "assets/img/portfolio/C7.RANGANA FORT/1.png", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/C7.RANGANA FORT/2.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/C7.RANGANA FORT/3.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/C7.RANGANA FORT/4.jpg", title: "RANGANA FORT" },
+        ],
+        gallery16: [
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/1.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/2.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/3.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/4.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/5.jpg", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/6.png", title: "RANGANA FORT" },
+          { src: "assets/img/portfolio/12.RUDRANA RESTAURANT/7.png", title: "RANGANA FORT" },
+        ],
+      };
+
+      const modal = document.getElementById('customModal');
+      const modalImg = document.getElementById('modalImage');
+      const caption = document.getElementById('caption');
+      const closeBtn = document.querySelector('.close');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      function showModal(index) {
+        const img = currentGallery[index];
+        if (!img) return;
+
+        // Set src first
+        modalImg.src = img.src;
+        caption.textContent = img.title || "";
+
+        // Wait until image is loaded before showing modal
+        modalImg.onload = () => {
+          modal.style.display = "block";
+        };
+
+        currentIndex = index;
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        showModal(currentIndex);
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        showModal(currentIndex);
+      }
+
+      // Attach click to tiles
+      document.querySelectorAll('.tile, .portfolio-item img').forEach(tile => {
+        tile.addEventListener('click', e => {
+          e.preventDefault();
+          const galleryKey = tile.dataset.gallery;
+          const index = parseInt(tile.dataset.index, 10) || 0;
+
+          currentGallery = galleries[galleryKey] || [];
+          if (!currentGallery.length) return;
+
+          showModal(0);
+        });
+      });
+
+      // Navigation
+      nextBtn.addEventListener('click', nextImage);
+      prevBtn.addEventListener('click', prevImage);
+
+      // Close modal
+      closeBtn.addEventListener('click', () => modal.style.display = "none");
+
+      // Close modal on click outside image
+      modal.addEventListener('click', e => {
+        if (e.target === modal) modal.style.display = "none";
+      });
+
+      // Keyboard support
+      document.addEventListener('keydown', e => {
+        if (modal.style.display === "block") {
+          if (e.key === "ArrowRight") nextImage();
+          if (e.key === "ArrowLeft") prevImage();
+          if (e.key === "Escape") modal.style.display = "none";
+        }
+      });
+
+    });
+
+
+  </script>
+</body>
+
+</html>
