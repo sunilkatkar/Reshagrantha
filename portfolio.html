@@ -44,9 +44,9 @@
 
     .modal-content {
       display: block;
-      margin: 20px auto;
+      margin: auto;
       width: auto;
-      height: 80vh;
+      max-height: 80vh;
       /* center image */
     }
 
@@ -98,6 +98,9 @@
         color-mix(in srgb, var(--default-color), transparent 30%);
       transition: 0.3s;
       line-height: 0;
+    }
+    .portfolio-item img{
+      cursor: pointer;
     }
   </style>
   <!-- =======================================================
@@ -194,7 +197,7 @@
             <!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
-              <img data-gallery="gallery1" src="assets/img/portfolio/2. Ferro/cover.jpg" class="img-fluid" alt="">
+              <img data-gallery="gallery1" data-index="1" src="assets/img/portfolio/2. Ferro/cover.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>FERRO HOUSE</h4>
                 <p>MARGASANI, BHOR, PUNE</p>
@@ -205,7 +208,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
-              <img data-gallery="gallery2" src="assets/img/portfolio/3. blooming school/cover.png" class="img-fluid"
+              <img data-gallery="gallery2" data-index="2" src="assets/img/portfolio/3. blooming school/cover.png" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>BLOOMING INTERNATIONAL SCHOOL</h4>
@@ -217,7 +220,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
-              <img data-gallery="gallery3" src="assets/img/portfolio/4. Sahani/SAHANI VILLA COVER.png" class="img-fluid"
+              <img data-gallery="gallery3" data-index="3" src="assets/img/portfolio/4. Sahani/SAHANI VILLA COVER.png" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>SAHANI VILLA</h4>
@@ -229,7 +232,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
-              <img data-gallery="gallery4" src="assets/img/portfolio/5. WADA , KAMSHET/COVER.png" class="img-fluid"
+              <img data-gallery="gallery4" data-index="4" src="assets/img/portfolio/5. WADA , KAMSHET/COVER.png" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>WADA</h4>
@@ -241,7 +244,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
-              <img data-gallery="gallery5" src="assets/img/portfolio/6. Sakshi Nisarg/cover.jpg" class="img-fluid"
+              <img data-gallery="gallery5" data-index="5" src="assets/img/portfolio/6. Sakshi Nisarg/cover.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>SAKSHI NISARG TOWNSHIP</h4>
@@ -253,7 +256,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-AR">
-              <img data-gallery="gallery6" src="assets/img/portfolio/7. Grace Villa/cover.jpg" class="img-fluid" alt="">
+              <img data-gallery="gallery6" data-index="6" src="assets/img/portfolio/7. Grace Villa/cover.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>GRACE VILLA</h4>
                 <p>PUNE</p>
@@ -264,7 +267,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-INT">
-              <img data-gallery="gallery7" src="assets/img/portfolio/8. BAVDHAN - Bisure Interior/cover.JPG"
+              <img data-gallery="gallery7" data-index="7" src="assets/img/portfolio/8. BAVDHAN - Bisure Interior/cover.JPG"
                 class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>4BHK</h4>
@@ -276,7 +279,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-INT">
-              <img data-gallery="gallery8" src="assets/img/portfolio/9. Balewadi Interior/cover.jpg" class="img-fluid"
+              <img data-gallery="gallery8" data-index="8" src="assets/img/portfolio/9. Balewadi Interior/cover.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>2BHK</h4>
@@ -288,7 +291,7 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-INT">
-              <img data-gallery="gallery9" src="assets/img/portfolio/10. Vaidya Interior/cover.jpg" class="img-fluid"
+              <img data-gallery="gallery9" data-index="9" src="assets/img/portfolio/10. Vaidya Interior/cover.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>VAIDYA HOUSE</h4>
@@ -299,7 +302,7 @@
               </div>
             </div><!-- End Portfolio Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-LANDSCAPE">
-              <img data-gallery="gallery10" src="assets/img/portfolio/11.ROHAN KRITIKA-/COVER.jpg" class="img-fluid"
+              <img data-gallery="gallery10" data-index="10" src="assets/img/portfolio/11.ROHAN KRITIKA-/COVER.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>INTEGRATED BALCONY DESIGN</h4>
@@ -310,7 +313,7 @@
               </div>
             </div><!-- End Portfolio Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
-              <img data-gallery="gallery11" src="assets/img/portfolio/C1.AGALESHWAR TEMPLE/COVER.jpg" class="img-fluid"
+              <img data-gallery="gallery11" data-index="11" src="assets/img/portfolio/C1.AGALESHWAR TEMPLE/COVER.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>AGALESHWAR TEMPLE</h4>
@@ -321,7 +324,7 @@
               </div>
             </div><!-- End Portfolio Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
-              <img data-gallery="gallery12" src="assets/img/portfolio/C2.BELANKI TEMPLE/COVER.jpg" class="img-fluid"
+              <img data-gallery="gallery12" data-index="12" src="assets/img/portfolio/C2.BELANKI TEMPLE/COVER.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>MAHADEV TEMPLE</h4>
@@ -332,7 +335,7 @@
               </div>
             </div><!-- End Portfolio Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
-              <img data-gallery="gallery13" src="assets/img/portfolio/C3.IRALI TEMPLE/COVER.jpg" class="img-fluid"
+              <img data-gallery="gallery13" data-index="13" src="assets/img/portfolio/C3.IRALI TEMPLE/COVER.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>MAHADEV TEMPLE</h4>
@@ -367,7 +370,7 @@
               </div>
             </div>End Portfolio Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ARCON">
-              <img data-gallery="gallery14" src="assets/img/portfolio/C7.RANGANA FORT/COVER.jpg" class="img-fluid"
+              <img data-gallery="gallery14" data-index="14" src="assets/img/portfolio/C7.RANGANA FORT/COVER.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>RANGANA FORT</h4>
@@ -378,7 +381,7 @@
               </div>
             </div><!-- End Portfolio Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-LANDSCAPE">
-              <img data-gallery="gallery16" src="assets/img/portfolio/12.RUDRANA RESTAURANT/COVER.jpg" class="img-fluid"
+              <img data-gallery="gallery16" data-index="16" src="assets/img/portfolio/12.RUDRANA RESTAURANT/COVER.jpg" class="img-fluid"
                 alt="">
               <div class="portfolio-info">
                 <h4>RUDRANA RESTAURANT</h4>
@@ -643,7 +646,8 @@
 
         // Wait until image is loaded before showing modal
         modalImg.onload = () => {
-          modal.style.display = "block";
+          modal.style.display = "flex";
+          modal.style.flexDirection = "column";
         };
 
         currentIndex = index;

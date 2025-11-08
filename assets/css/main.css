@@ -1735,6 +1735,7 @@ section,
 
 .portfolio-details .portfolio-description p {
   padding: 0;
+  text-align: justify;
 }
 
 .portfolio-details .portfolio-description .testimonial-item {

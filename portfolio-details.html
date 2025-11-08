@@ -36,6 +36,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .swiper-slide {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body class="portfolio-details-page">
@@ -414,7 +419,7 @@ Chawouri and marchel are prominently displayed between two arches, further empha
     selectedGallery.forEach(item => {
       const slide = document.createElement('div');
       slide.className = 'swiper-slide';
-      slide.innerHTML = `<img src="${item.src}" alt="${item.title}" style="max-height:80vh;">`;
+      slide.innerHTML = `<img src="${item.src}" alt="${item.title}" style="max-height:80vh;width:auto !important;">`;
       swiperWrapper.appendChild(slide);
     });
 
