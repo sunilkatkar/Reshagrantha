@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reshagrantha — Architecture, Interior &amp; Conservation Studio</title>
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <meta name="description"
+    content="Reshagrantha is an award-winning architectural studio based in Pune, working across architecture, interior, landscape and heritage conservation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ECE6D8;
+      --paper-dim: #E1D9C6;
+      --ink: #221D18;
+      --ink-soft: #544B3E;
+      --stone: #8B8172;
+      --oxide: #A23A22;
+      --line: rgba(34, 29, 24, 0.16);
+      --line-strong: rgba(34, 29, 24, 0.32);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--oxide);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      line-height: 1.05;
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    @media (max-width:700px) {
+      .wrap {
+        padding: 0 24px;
+      }
+    }
+
+    /* ---------- focus ---------- */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--oxide);
+      outline-offset: 3px;
+    }
+
+    /* ---------- corner marks, used as the recurring signature ---------- */
+    .marks {
+      position: relative;
+    }
+
+    .marks::before,
+    .marks::after,
+    .marks .m2::before,
+    .marks .m2::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--ink);
+      opacity: 0;
+      transition: opacity .35s ease, transform .35s ease;
+      pointer-events: none;
+    }
+
+    .marks::before {
+      top: -1px;
+      left: -1px;
+      border-right: none;
+      border-bottom: none;
+      transform: translate(4px, 4px);
+    }
+
+    .marks::after {
+      top: -1px;
+      right: -1px;
+      border-left: none;
+      border-bottom: none;
+      transform: translate(-4px, 4px);
+    }
+
+    .marks .m2::before {
+      bottom: -1px;
+      left: -1px;
+      border-right: none;
+      border-top: none;
+      transform: translate(4px, -4px);
+    }
+
+    .marks .m2::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: none;
+      border-top: none;
+      transform: translate(-4px, -4px);
+    }
+
+    .marks:hover::before,
+    .marks:hover::after,
+    .marks:hover .m2::before,
+    .marks:hover .m2::after {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    /* ---------- nav ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 26px 0;
+      transition: background .4s ease, padding .4s ease, border-color .4s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    header.solid {
+      background: rgba(236, 230, 216, .92);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo {
+      height: 38px;
+      width: auto;
+      display: block;
+      transition: filter .4s ease, height .3s ease;
+    }
+
+    header.solid .brand-logo {
+      height: 32px;
+    }
+
+    /* the header sits over a photo while unpinned, so give the mark a soft
+     shadow there for legibility whatever its native colours are */
+    body.hero-dark header:not(.solid) .brand-logo {
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .55)) drop-shadow(0 0 14px rgba(0, 0, 0, .25));
+    }
+
+    body.hero-dark header:not(.solid) .navlinks a {
+      color: #F4EFE3;
+    }
+
+    body.hero-dark header:not(.solid) .navlinks a::after {
+      background: #F4EFE3;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 34px;
+    }
+
+    .navlinks a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .navlinks a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 0;
+      background: var(--ink);
+      transition: width .3s ease;
+    }
+
+    .navlinks a:hover::after {
+      width: 100%;
+    }
+
+    .navtoggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .navtoggle span {
+      width: 22px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    body.hero-dark .navtoggle span {
+      background: #F4EFE3;
+    }
+
+    header.solid .navtoggle span {
+      background: var(--ink) !important;
+    }
+
+    @media (max-width:860px) {
+      .navlinks {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: min(78vw, 320px);
+        background: var(--ink);
+        flex-direction: column;
+        justify-content: center;
+        gap: 26px;
+        padding: 0 40px;
+        transform: translateX(100%);
+        transition: transform .45s ease;
+      }
+
+      .navlinks.open {
+        transform: translateX(0);
+      }
+
+      .navlinks a {
+        color: #F4EFE3;
+        font-size: 13px;
+      }
+
+      .navtoggle {
+        display: flex;
+      }
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.92) contrast(1.02);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 16, 12, .15) 0%, rgba(20, 16, 12, .08) 40%, rgba(20, 16, 12, .72) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      color: #F4EFE3;
+      padding: 0 48px 56px;
+    }
+
+    @media (max-width:700px) {
+      .hero-inner {
+        padding: 0 24px 40px;
+      }
+    }
+
+    .hero-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #E7C9A0;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-eyebrow .dash {
+      width: 34px;
+      height: 1px;
+      background: #E7C9A0;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 10vw, 132px);
+      font-weight: 400;
+      letter-spacing: -.01em;
+      max-width: 16ch;
+    }
+
+    .hero-sub {
+      margin-top: 22px;
+      max-width: 480px;
+      font-size: 15.5px;
+      color: #E6DFCF;
+      font-weight: 400;
+    }
+
+    .hero-meta {
+      position: absolute;
+      right: 48px;
+      bottom: 56px;
+      z-index: 2;
+      text-align: right;
+      color: #E6DFCF;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+
+    .hero-meta div {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width:900px) {
+      .hero-meta {
+        display: none;
+      }
+    }
+
+    .compass {
+      position: absolute;
+      left: 48px;
+      top: 110px;
+      z-index: 2;
+      opacity: .85;
+    }
+
+    @media (max-width:700px) {
+      .compass {
+        display: none;
+      }
+    }
+
+    section {
+      position: relative;
+    }
+
+    /* ---------- shared section heading ---------- */
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 88px;
+      padding-top: 140px;
+      border-top: 1px solid var(--line);
+    }
+
+    .sec-head h2 {
+      font-size: clamp(34px, 4.4vw, 54px);
+      font-weight: 400;
+      margin-top: 18px;
+    }
+
+    .sec-head .idx {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--stone);
+      text-align: right;
+      padding-top: 18px;
+    }
+
+    @media (max-width:700px) {
+      .sec-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+
+    /* ---------- about ---------- */
+    .about {
+      padding-bottom: 150px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    @media (max-width:860px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    .about-img-wrap {
+      position: sticky;
+      top: 110px;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .about-cap {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--stone);
+      margin-top: 12px;
+      letter-spacing: .04em;
+    }
+
+    .about-copy p {
+      margin-bottom: 22px;
+      color: var(--ink-soft);
+      font-size: 16.5px;
+      max-width: 58ch;
+    }
+
+    .about-copy .lede {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 34px;
+      max-width: 22ch;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 56px;
+      margin-top: 44px;
+      flex-wrap: wrap;
+    }
+
+    .stat-row div strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--oxide);
+    }
+
+    .stat-row div span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ---------- services ---------- */
+    .services {
+      padding-bottom: 150px;
+    }
+
+    .svc-row {
+      display: grid;
+      grid-template-columns: 70px 1.1fr 1.6fr;
+      gap: 28px;
+      align-items: start;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+      transition: background .3s ease;
+    }
+
+    .svc-row:hover {
+      background: var(--paper-dim);
+    }
+
+    .svc-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--stone);
+      padding-top: 6px;
+    }
+
+    .svc-row h3 {
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .svc-row p {
+      color: var(--ink-soft);
+      font-size: 15px;
+      max-width: 56ch;
+      padding-top: 6px;
+    }
+
+    @media (max-width:760px) {
+      .svc-row {
+        grid-template-columns: 40px 1fr;
+        row-gap: 8px;
+      }
+
+      .svc-row p {
+        grid-column: 2;
+        max-width: none;
+      }
+    }
+
+    /* ---------- portfolio ---------- */
+    .portfolio {
+      padding-bottom: 120px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .filters button {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid var(--line-strong);
+      color: var(--ink-soft);
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+
+    .filters button.active,
+    .filters button:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--line);
+    }
+
+    @media (max-width:560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .card.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card.hide {
+      display: none;
+    }
+
+    .card a {
+      display: block;
+    }
+
+    .card-media {
+      position: relative;
+      aspect-ratio: 5/4;
+      overflow: hidden;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+      filter: grayscale(.15);
+    }
+
+    .card:hover .card-media img {
+      transform: scale(1.055);
+      filter: grayscale(0);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(236, 230, 216, .9);
+      color: var(--ink);
+      padding: 5px 9px;
+    }
+
+    .card-info {
+      padding: 18px 20px 22px;
+    }
+
+    .card-index {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--oxide);
+      margin-bottom: 8px;
+    }
+
+    .card-info h4 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .card-info .loc {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ---------- team ---------- */
+    .team {
+      padding-bottom: 150px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--line);
+    }
+
+    @media (max-width:700px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .member {
+      background: var(--paper);
+      padding-bottom: 2px;
+    }
+
+    .member-media {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .member-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.4);
+      transition: filter .4s ease;
+    }
+
+    .member:hover .member-media img {
+      filter: grayscale(0);
+    }
+
+    .member-info {
+      padding: 26px 28px 34px;
+    }
+
+    .member-info h3 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .member-info .role {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--oxide);
+      margin-bottom: 4px;
+    }
+
+    .member-info .cred {
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    /* ---------- contact / footer ---------- */
+    footer {
+      background: var(--ink);
+      color: #EDE6D6;
+      padding: 150px 0 34px;
+      margin-top: 20px;
+    }
+
+    .foot-top {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 70px;
+      border-bottom: 1px solid rgba(237, 230, 214, .16);
+    }
+
+    @media (max-width:800px) {
+      .foot-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    footer h2 {
+      font-size: clamp(30px, 5vw, 50px);
+      font-weight: 400;
+      max-width: 11ch;
+      margin-bottom: 26px;
+    }
+
+    .foot-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #EDE6D6;
+      border-bottom: 1px solid var(--oxide);
+      padding-bottom: 6px;
+    }
+
+    footer h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #B8AE97;
+      margin-bottom: 20px;
+    }
+
+    footer address,
+    footer p {
+      font-style: normal;
+      color: #EDE6D6;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    footer a.linkline {
+      display: block;
+      color: #EDE6D6;
+      margin-bottom: 10px;
+      font-size: 15px;
+      transition: color .2s;
+    }
+
+    footer a.linkline:hover {
+      color: var(--oxide);
+    }
+
+    .foot-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .04em;
+      color: #8A806C;
+    }
+
+    .foot-logo {
+      height: 22px;
+      width: auto;
+      display: block;
+      opacity: .75;
+      filter: brightness(0) invert(1);
+      /* renders the mark in a single light tone against the dark footer */
+      margin-right: auto;
+    }
+
+    @media (max-width:800px) {
+      .foot-logo {
+        order: -1;
+        margin-right: 0;
+      }
+    }
+
+    /* reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal,
+      .card {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ---------- portfolio card: click-to-open affordance ---------- */
+    .card {
+      cursor: pointer;
+    }
+
+    .card-view {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(34, 29, 24, 0);
+      opacity: 0;
+      transition: opacity .35s ease, background .35s ease;
+      pointer-events: none;
+    }
+
+    .card:hover .card-view {
+      opacity: 1;
+      background: rgba(34, 29, 24, .22);
+    }
+
+    .card-view span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #F4EFE3;
+      border: 1px solid rgba(244, 239, 227, .7);
+      padding: 11px 22px;
+      transform: translateY(10px);
+      transition: transform .35s ease;
+    }
+
+    .card:hover .card-view span {
+      transform: translateY(0);
+    }
+
+    /* ---------- lightbox ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(17, 14, 11, .97);
+      color: #F4EFE3;
+      display: none;
+      flex-direction: column;
+      padding: 26px 32px 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      z-index: 5;
+      background: none;
+      border: none;
+      color: #F4EFE3;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      width: 44px;
+      height: 44px;
+    }
+
+    .lb-close:hover {
+      opacity: .7;
+    }
+
+    .lb-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding-right: 60px;
+      flex-wrap: wrap;
+    }
+
+    .lb-index {
+      font-size: 12px;
+      color: var(--oxide);
+      padding-top: 6px;
+      min-width: 80px;
+    }
+
+    .lb-titles {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .lb-titles h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .lb-loc {
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #B8AE97;
+      margin-top: 4px;
+    }
+
+    .lb-full {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #F4EFE3;
+      border-bottom: 1px solid var(--oxide);
+      padding-bottom: 4px;
+      align-self: flex-end;
+      white-space: nowrap;
+    }
+
+    .lb-info {
+      display: none;
+      gap: 40px;
+      padding: 18px 0 4px;
+      margin-top: 6px;
+      border-top: 1px solid rgba(244, 239, 227, .14);
+    }
+
+    .lb-info.show {
+      display: flex;
+    }
+
+    .lb-desc {
+      flex: 1.6;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #D9D0BC;
+      max-width: 66ch;
+    }
+
+    .lb-facts {
+      flex: 1;
+      min-width: 200px;
+      max-width: 260px;
+    }
+
+    .lb-facts h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #F4EFE3;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--oxide);
+    }
+
+    .lb-fact {
+      margin-bottom: 12px;
+    }
+
+    .lb-fact-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #8A806C;
+      margin-bottom: 3px;
+    }
+
+    .lb-fact-value {
+      font-size: 14px;
+      color: #F4EFE3;
+    }
+
+    @media (max-width:800px) {
+      .lb-info {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .lb-facts {
+        max-width: none;
+      }
+    }
+
+    .lb-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 0;
+      padding: 20px 0;
+    }
+
+    .lb-imgwrap {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 0;
+    }
+
+    .lb-imgwrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .lb-imgwrap img.shown {
+      opacity: 1;
+    }
+
+    .lb-loading {
+      position: absolute;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #8A806C;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .lb-loading.show {
+      opacity: 1;
+    }
+
+    .lb-nav {
+      background: none;
+      border: 1px solid rgba(244, 239, 227, .3);
+      color: #F4EFE3;
+      width: 46px;
+      height: 46px;
+      flex: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background .25s ease, border-color .25s ease;
+    }
+
+    .lb-nav:hover {
+      background: rgba(244, 239, 227, .12);
+      border-color: rgba(244, 239, 227, .7);
+    }
+
+    .lb-nav:disabled {
+      opacity: .25;
+      cursor: default;
+    }
+
+    .lb-foot {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .lb-counter {
+      font-size: 11px;
+      color: #8A806C;
+      min-width: 56px;
+    }
+
+    .lb-thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      flex: 1;
+      padding-bottom: 4px;
+    }
+
+    .lb-thumbs img {
+      width: 64px;
+      height: 48px;
+      object-fit: cover;
+      opacity: .45;
+      cursor: pointer;
+      flex: none;
+      transition: opacity .25s ease, outline .25s ease;
+    }
+
+    .lb-thumbs img.active {
+      opacity: 1;
+      outline: 1px solid var(--oxide);
+      outline-offset: 2px;
+    }
+
+    @media (max-width:700px) {
+      .lightbox {
+        padding: 70px 18px 16px;
+      }
+
+      .lb-head {
+        padding-right: 20px;
+      }
+
+      .lb-full {
+        display: none;
+      }
+
+      .lb-nav {
+        width: 38px;
+        height: 38px;
+      }
+
+      .lb-thumbs {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="hero-dark">
+
+  <header id="site-header">
+    <div class="wrap">
+      <a href="#top" class="brand">
+        <img src="assets/img/logo.png" alt="Reshagrantha Architects" class="brand-logo">
+      </a>
+      <nav class="navlinks" id="navlinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <img class="hero-img" src="assets/img/hero-carousel/hero-carousel-1.jpeg"
+      alt="Reshagrantha architecture project exterior">
+    <div class="hero-scrim"></div>
+
+    <svg class="compass" width="72" height="72" viewBox="0 0 72 72" fill="none">
+      <circle cx="36" cy="36" r="35" stroke="#E7C9A0" stroke-width="1" />
+      <path d="M36 6 L40 34 L36 30 L32 34 Z" fill="#E7C9A0" />
+      <text x="36" y="20" fill="#E7C9A0" font-family="IBM Plex Mono" font-size="9" text-anchor="middle">N</text>
+    </svg>
+
+    <div class="hero-meta">
+      <div>18.5643&deg; N, 73.7898&deg; E</div>
+      <div>PUNE, MAHARASHTRA</div>
+      <div>EST. 2015</div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span class="dash"></span> Architecture &mdash; Interior &mdash; Landscape &mdash;
+        Conservation</div>
+      <h1>Design in dialogue<br>with place.</h1>
+      <p class="hero-sub">Reshagrantha is a Pune-based studio working across architecture, interiors and heritage
+        conservation &mdash; building spaces that hold a conversation between tradition and the present.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">01 &mdash; About the studio</span>
+          <h2>Our story</h2>
+        </div>
+        <div class="idx">EST. 2015<br>PUNE, INDIA</div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="assets/img/about.jpg" alt="Reshagrantha studio project detail">
+          <div class="about-cap">FIG. 01 &mdash; Site study, ongoing residential commission</div>
+        </div>
+        <div class="about-copy reveal">
+          <p class="lede">Spaces that are timeless, meaningful, and in harmony with their environment.</p>
+          <p>Reshagrantha is an award-winning architectural firm recognised for its creative excellence and diverse
+            portfolio spanning architecture, interior, landscape, architectural conservation, art conservation, metal
+            conservation and artwork projects.</p>
+          <p>Led by our Principal Architect &mdash; honoured as India's Most Promising and Trendsetting Architect of
+            2022 &mdash; the studio embodies a vision rooted in integrity, innovation and contextual sensitivity. Each
+            project reflects a dialogue between tradition and modernity, precision and creativity.</p>
+          <p>Guided by nature-centric design ethics, we build lasting relationships and designs that celebrate life,
+            culture and coexistence with nature.</p>
+          <div class="stat-row">
+            <div><strong>10+</strong><span>Years in practice</span></div>
+            <div><strong>16+</strong><span>Projects delivered</span></div>
+            <div><strong>6</strong><span>Disciplines</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">02 &mdash; What we do</span>
+          <h2>Schedule of services</h2>
+        </div>
+        <div class="idx">MULTI&#8209;DISCIPLINARY<br>DESIGN PRACTICE</div>
+      </div>
+
+      <div class="reveal">
+        <div class="svc-row">
+          <div class="svc-num">01</div>
+          <h3>Architecture</h3>
+          <p>We experiment with forms of structure, materials and construction techniques, delivered in a considered,
+            cost-effective manner.</p>
+        </div>
+        <div class="svc-row">
+          <div class="svc-num">02</div>
+          <h3>Interior</h3>
+          <p>Every space is personalised around how you live in it &mdash; shaped by your comfort and our design vision.
+          </p>
+        </div>
+        <div class="svc-row">
+          <div class="svc-num">03</div>
+          <h3>Landscape</h3>
+          <p>Planning, design and stewardship of the built and natural environment, creating life in the space between
+            buildings.</p>
+        </div>
+        <div class="svc-row">
+          <div class="svc-num">04</div>
+          <h3>Architectural conservation</h3>
+          <p>We retain the authentic built form of heritage structures through careful restoration, aiding the long-term
+            preservation of buildings.</p>
+        </div>
+        <div class="svc-row">
+          <div class="svc-num">05</div>
+          <h3>Metal conservation</h3>
+          <p>Restoration of historic metalwork, fittings and architectural hardware &mdash; stabilising and preserving
+            material craft for continued use.</p>
+        </div>
+        <div class="svc-row">
+          <div class="svc-num">06</div>
+          <h3>Art installation</h3>
+          <p>Customised artwork across a range of media, developed to sit in dialogue with its architectural setting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">03 &mdash; Selected work</span>
+          <h2>Portfolio</h2>
+        </div>
+        <div class="idx">16 PROJECTS<br>2015&ndash;PRESENT</div>
+      </div>
+
+      <div class="filters reveal">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="architecture">Architecture</button>
+        <button data-filter="interior">Interior</button>
+        <button data-filter="conservation">Conservation</button>
+        <button data-filter="landscape">Landscape</button>
+      </div>
+
+      <div class="grid" id="grid">
+        <!-- cards injected by data below -->
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="team">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">04 &mdash; The people</span>
+          <h2>Our team</h2>
+        </div>
+        <div class="idx">DEDICATED &amp;<br>EXPERIENCED</div>
+      </div>
+
+      <div class="team-grid reveal">
+        <div class="member">
+          <div class="member-media"><img src="assets/img/team/team-1.jpg" alt="Ar. Aniket Shendge"></div>
+          <div class="member-info">
+            <h3>Ar. Aniket Shendge</h3>
+            <div class="role">Founder &amp; Principal Architect</div>
+            <div class="cred">M.Arch, Conservation Architecture</div>
+          </div>
+        </div>
+        <div class="member">
+          <div class="member-media"><img src="assets/img/team/team-2.jpg" alt="Ar. Shivali Lalbige-Shendge"></div>
+          <div class="member-info">
+            <h3>Ar. Shivali Lalbige-Shendge</h3>
+            <div class="role">Senior Landscape Architect</div>
+            <div class="cred">M.Arch, Landscape Architecture</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="reveal">
+          <span class="eyebrow" style="color:var(--oxide)">05 &mdash; Get in touch</span>
+          <h2>Let's start a conversation about your site.</h2>
+          <a class="foot-cta" href="mailto:reshagrantha@gmail.com">Email the studio &rarr;</a>
+        </div>
+        <div class="reveal">
+          <h4>Studio</h4>
+          <address>
+            302 Cresent Park,<br>
+            Westport Business Lane,<br>
+            Pancard Road, Baner,<br>
+            Pune 411045
+          </address>
+          <a class="linkline"
+            href="https://google.com/maps?daddr=S.No.+32/1A/1/30+to+38+%26+54,+Pancard+Club+Rd,+Baner,+Pune,+Maharashtra+411069"
+            target="_blank" rel="noopener" style="margin-top:14px;">View on map &rarr;</a>
+        </div>
+        <div class="reveal">
+          <h4>Contact</h4>
+          <a class="linkline" href="tel:+919527548995">+91 95275 48995</a>
+          <a class="linkline" href="mailto:reshagrantha@gmail.com">reshagrantha@gmail.com</a>
+          <a class="linkline" href="https://www.instagram.com/reshagrantha?igsh=MTc0OTYxZWU1aTZyeA==" target="_blank"
+            rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <img src="assets/img/logo.png" alt="Reshagrantha Architects" class="foot-logo">
+        <span>&copy; 2026 Reshagrantha Architects. All rights reserved.</span>
+        <span>ARCHITECTURE &mdash; INTERIOR &mdash; LANDSCAPE &mdash; CONSERVATION</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project gallery">
+    <button class="lb-close" id="lbClose" aria-label="Close gallery">&times;</button>
+    <div class="lb-head">
+      <div class="lb-index mono" id="lbIndex">DWG&mdash;01</div>
+      <div class="lb-titles">
+        <h3 id="lbTitle">Project title</h3>
+        <div class="lb-loc mono" id="lbLoc">Location</div>
+      </div>
+      <a class="lb-full mono" id="lbFull" href="#" target="_blank" rel="noopener">Full project page &rarr;</a>
+    </div>
+    <div class="lb-info" id="lbInfo">
+      <p class="lb-desc" id="lbDesc"></p>
+      <div class="lb-facts">
+        <h4>Project information</h4>
+        <div class="lb-fact">
+          <span class="lb-fact-label">Location</span>
+          <span class="lb-fact-value" id="lbFactLoc"></span>
+        </div>
+        <div class="lb-fact" id="lbFactAreaRow">
+          <span class="lb-fact-label">Area</span>
+          <span class="lb-fact-value" id="lbFactArea"></span>
+        </div>
+      </div>
+    </div>
+    <div class="lb-stage">
+      <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">&#10094;</button>
+      <div class="lb-imgwrap">
+        <img id="lbImage" src="" alt="">
+        <div class="lb-loading" id="lbLoading">Loading gallery&hellip;</div>
+      </div>
+      <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">&#10095;</button>
+    </div>
+    <div class="lb-foot">
+      <div class="lb-counter mono" id="lbCounter">1 / 1</div>
+      <div class="lb-thumbs" id="lbThumbs"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // ---- data: portfolio projects ----
+      // category values: architecture | interior | conservation | landscape
+      // NOTE: categories were inferred from project type since the source site
+      // did not expose per-project tags — adjust the `cat` field per project as needed.
+      var base = "assets/img/portfolio/";
+      var projects = [
+        // desc / area: shown in the lightbox "Project information" panel.
+        // Only 2BHK Residence is filled in — the rest are `null` placeholders.
+        // Fill these in with the text + area from each project's detail page;
+        // any project left as null will simply skip that panel in the lightbox.
+        { n: "01", title: "Rudrana Restaurant", loc: "Wai, Satara", cat: "architecture", img: "1. Rudrana/cover.jpg", link: "portfolio-details.html?gallery=gallery0", desc: null, area: null },
+        { n: "02", title: "Ferro House", loc: "Margasani, Bhor, Pune", cat: "architecture", img: "2. Ferro/cover.jpg", link: "portfolio-details.html?gallery=gallery1", desc: null, area: null },
+        { n: "03", title: "Blooming International School", loc: "Gahunje, Pune", cat: "architecture", img: "3. blooming school/cover.png", link: "portfolio-details.html?gallery=gallery2", desc: null, area: null },
+        { n: "04", title: "Sahani Villa", loc: "Mahabaleshwar", cat: "architecture", img: "4. Sahani/SAHANI VILLA COVER.png", link: "portfolio-details.html?gallery=gallery3", desc: null, area: null },
+        { n: "05", title: "Wada", loc: "Kamshet", cat: "architecture", img: "5. WADA , KAMSHET/COVER.png", link: "portfolio-details.html?gallery=gallery4", desc: null, area: null },
+        { n: "06", title: "Sakshi Nisarg Township", loc: "Wai, Satara", cat: "landscape", img: "6. Sakshi Nisarg/cover.jpg", link: "portfolio-details.html?gallery=gallery5", desc: null, area: null },
+        { n: "07", title: "Grace Villa", loc: "Pune", cat: "architecture", img: "7. Grace Villa/cover.jpg", link: "portfolio-details.html?gallery=gallery6", desc: null, area: null },
+        { n: "08", title: "4BHK Residence", loc: "Bavdhan, Pune", cat: "interior", img: "8. BAVDHAN - Bisure Interior/cover.jpg", link: "portfolio-details.html?gallery=gallery7", desc: null, area: null },
+        {
+          n: "09", title: "2BHK", loc: "Balewadi, Pune, Maharashtra", cat: "interior", img: "9. Balewadi Interior/cover.jpg", link: "portfolio-details.html?gallery=gallery8",
+          desc: "This 2BHK residence in Balewadi is designed with a simple and warm interior palette, highlighting comfort and functionality. The spaces are anchored by wooden furniture, which adds natural texture, durability, and a timeless aesthetic. Clean layouts and minimal finishes ensure openness, while the wooden elements bring warmth and character to the home. The overall design reflects a balance of modern simplicity and homely charm, creating an inviting atmosphere for everyday living.",
+          area: "950 sq ft"
+        },
+        { n: "10", title: "Vaidya House", loc: "Pune", cat: "interior", img: "10. Vaidya Interior/cover.jpg", link: "portfolio-details.html?gallery=gallery9", desc: null, area: null },
+        { n: "11", title: "Integrated Balcony Design", loc: "Rohan Kritika, Pune", cat: "interior", img: "11.ROHAN KRITIKA-/COVER.jpg", link: "portfolio-details.html?gallery=gallery10", desc: null, area: null },
+        { n: "12", title: "Agaleshwar Temple", loc: "Agalgaon, Sangli", cat: "conservation", img: "C1.AGALESHWAR TEMPLE/COVER.jpg", link: "portfolio-details.html?gallery=gallery11", desc: null, area: null },
+        { n: "13", title: "Mahadev Temple", loc: "Belanki, Sangli", cat: "conservation", img: "C2.BELANKI TEMPLE/COVER.jpg", link: "portfolio-details.html?gallery=gallery12", desc: null, area: null },
+        { n: "14", title: "Mahadev Temple", loc: "Irali, Sangli", cat: "conservation", img: "C3.IRALI TEMPLE/COVER.jpg", link: "portfolio-details.html?gallery=gallery13", desc: null, area: null },
+        { n: "15", title: "Rangana Fort", loc: "Kolhapur", cat: "conservation", img: "C7.RANGANA FORT/COVER.jpg", link: "portfolio-details.html?gallery=gallery14", desc: null, area: null },
+        { n: "16", title: "Rudrana Restaurant", loc: "Wai, Satara", cat: "architecture", img: "12.RUDRANA RESTAURANT/COVER.jpg", link: "portfolio-details.html?gallery=gallery16", desc: null, area: null }
+      ];
+
+      function pathUrl(imgPath) {
+        return base + imgPath.split('/').map(encodeURIComponent).join('/');
+      }
+      function folderUrl(imgPath) {
+        var parts = imgPath.split('/');
+        parts.pop();
+        return base + parts.map(encodeURIComponent).join('/') + (parts.length ? '/' : '');
+      }
+
+      var grid = document.getElementById('grid');
+      grid.innerHTML = projects.map(function (p, i) {
+        var url = pathUrl(p.img);
+        return '<div class="card marks" data-cat="' + p.cat + '" data-index="' + i + '" tabindex="0" role="button" ' +
+          'aria-label="Open gallery for ' + p.title + '">' +
+          '<div class="card-media">' +
+          '<span class="card-tag">' + p.cat + '</span>' +
+          '<img src="' + url + '" alt="' + p.title + ', ' + p.loc + '" loading="lazy">' +
+          '<div class="card-view"><span>View gallery</span></div>' +
+          '</div>' +
+          '<div class="card-info m2">' +
+          '<div class="card-index">DWG&mdash;' + p.n + '</div>' +
+          '<h4>' + p.title + '</h4>' +
+          '<div class="loc">' + p.loc + '</div>' +
+          '</div>' +
+          '</div>';
+      }).join('');
+
+      document.querySelectorAll('.card').forEach(function (card) {
+        function openIt() { openLightbox(parseInt(card.dataset.index, 10)); }
+        card.addEventListener('click', openIt);
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openIt(); }
+        });
+      });
+
+      // reveal cards after paint
+      requestAnimationFrame(function () {
+        document.querySelectorAll('.card').forEach(function (c, i) {
+          setTimeout(function () { c.classList.add('in'); }, i * 35);
+        });
+      });
+
+      // ---- filters ----
+      var buttons = document.querySelectorAll('.filters button');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var f = btn.dataset.filter;
+          document.querySelectorAll('.card').forEach(function (c) {
+            var show = (f === 'all' || c.dataset.cat === f);
+            c.classList.toggle('hide', !show);
+          });
+        });
+      });
+
+      // ---- header solid on scroll + hero-dark toggle ----
+      var header = document.getElementById('site-header');
+      var hero = document.querySelector('.hero');
+      function onScroll() {
+        var y = window.scrollY;
+        header.classList.toggle('solid', y > 40);
+        document.body.classList.toggle('hero-dark', y < hero.offsetHeight - 90);
+      }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // ---- mobile nav ----
+      var toggle = document.getElementById('navtoggle');
+      var links = document.getElementById('navlinks');
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { links.classList.remove('open'); });
+      });
+
+      // ---- lightbox / slideshow ----
+      var lb = document.getElementById('lightbox');
+      var lbImage = document.getElementById('lbImage');
+      var lbLoading = document.getElementById('lbLoading');
+      var lbIndex = document.getElementById('lbIndex');
+      var lbTitle = document.getElementById('lbTitle');
+      var lbLoc = document.getElementById('lbLoc');
+      var lbFull = document.getElementById('lbFull');
+      var lbInfo = document.getElementById('lbInfo');
+      var lbDesc = document.getElementById('lbDesc');
+      var lbFactLoc = document.getElementById('lbFactLoc');
+      var lbFactArea = document.getElementById('lbFactArea');
+      var lbFactAreaRow = document.getElementById('lbFactAreaRow');
+      var lbCounter = document.getElementById('lbCounter');
+      var lbThumbs = document.getElementById('lbThumbs');
+      var lbPrev = document.getElementById('lbPrev');
+      var lbNext = document.getElementById('lbNext');
+      var lbClose = document.getElementById('lbClose');
+
+      var galleryCache = {};   // project index -> array of confirmed image URLs
+      var currentProject = null;
+      var currentSlide = 0;
+      var lastFocused = null;
+
+      // Probe a single image URL; resolves with the URL if it loads, null otherwise.
+      function probeImage(src) {
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () { resolve(src); };
+          img.onerror = function () { resolve(null); };
+          img.src = src;
+        });
+      }
+
+      // A project folder may hold any number of extra photos beyond the cover
+      // (naming conventions vary by upload). We check common numbered filenames
+      // in the same folder as the cover image and keep whichever actually exist,
+      // stopping early once we hit a run of misses so this stays fast.
+      async function discoverGallery(project) {
+        var folder = folderUrl(project.img);
+        var cover = pathUrl(project.img);
+        var images = [cover];
+        var exts = ['jpg', 'jpeg', 'png', 'JPG', 'PNG'];
+        var misses = 0;
+        for (var i = 1; i <= 14 && misses < 4; i++) {
+          var hit = null;
+          for (var e = 0; e < exts.length; e++) {
+            var candidate = folder + i + '.' + exts[e];
+            var result = await probeImage(candidate);
+            if (result) { hit = result; break; }
+          }
+          if (hit) { images.push(hit); misses = 0; }
+          else { misses++; }
+        }
+        return images;
+      }
+
+      function renderThumbs(images) {
+        lbThumbs.innerHTML = images.map(function (src, i) {
+          return '<img src="' + src + '" data-i="' + i + '" alt="View ' + (i + 1) + '">';
+        }).join('');
+        lbThumbs.querySelectorAll('img').forEach(function (t) {
+          t.addEventListener('click', function () { showSlide(parseInt(t.dataset.i, 10)); });
+        });
+      }
+
+      function showSlide(i) {
+        var images = galleryCache[currentProject.key] || [pathUrl(currentProject.img)];
+        if (i < 0) i = 0;
+        if (i > images.length - 1) i = images.length - 1;
+        currentSlide = i;
+        lbImage.classList.remove('shown');
+        var swap = new Image();
+        swap.onload = function () {
+          lbImage.src = images[i];
+          requestAnimationFrame(function () { lbImage.classList.add('shown'); });
+        };
+        swap.src = images[i];
+        lbCounter.textContent = (i + 1) + ' / ' + images.length;
+        lbPrev.disabled = (i === 0);
+        lbNext.disabled = (i === images.length - 1);
+        lbThumbs.querySelectorAll('img').forEach(function (t, ti) {
+          t.classList.toggle('active', ti === i);
+        });
+      }
+
+      async function openLightbox(projectIndex) {
+        var p = projects[projectIndex];
+        p.key = projectIndex;
+        currentProject = p;
+        lastFocused = document.activeElement;
+
+        lbIndex.textContent = 'DWG\u2014' + p.n;
+        lbTitle.textContent = p.title;
+        lbLoc.textContent = p.loc;
+        lbFull.href = p.link;
+
+        if (p.desc || p.area) {
+          lbInfo.classList.add('show');
+          lbDesc.textContent = p.desc || '';
+          lbDesc.style.display = p.desc ? '' : 'none';
+          lbFactLoc.textContent = p.loc;
+          if (p.area) {
+            lbFactArea.textContent = p.area;
+            lbFactAreaRow.style.display = '';
+          } else {
+            lbFactAreaRow.style.display = 'none';
+          }
+        } else {
+          lbInfo.classList.remove('show');
+        }
+
+        lbThumbs.innerHTML = '';
+        lbCounter.textContent = '1 / 1';
+        lbImage.classList.remove('shown');
+        lbImage.src = pathUrl(p.img);
+        requestAnimationFrame(function () { lbImage.classList.add('shown'); });
+
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+
+        if (!galleryCache[projectIndex]) {
+          lbLoading.classList.add('show');
+          var images = await discoverGallery(p);
+          galleryCache[projectIndex] = images;
+          lbLoading.classList.remove('show');
+          if (currentProject === p) {
+            renderThumbs(images);
+            showSlide(0);
+          }
+        } else {
+          renderThumbs(galleryCache[projectIndex]);
+          showSlide(0);
+        }
+      }
+
+      function closeLightbox() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+      lbPrev.addEventListener('click', function () { showSlide(currentSlide - 1); });
+      lbNext.addEventListener('click', function () { showSlide(currentSlide + 1); });
+
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+        if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+      });
+
+      // basic swipe support for touch devices
+      var touchX = null;
+      lb.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) showSlide(currentSlide + (dx < 0 ? 1 : -1));
+        touchX = null;
+      }, { passive: true });
+
+      // ---- generic reveal on scroll ----
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: .15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+</body>
+
+</html>
