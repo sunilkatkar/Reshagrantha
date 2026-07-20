@@ -186,6 +186,18 @@
       justify-content: space-between;
     }
 
+    .scroll-progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 1px;
+      width: 100%;
+      background: var(--oxide);
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform .1s linear;
+    }
+
     .brand {
       display: flex;
       align-items: center;
@@ -313,9 +325,10 @@
       position: absolute;
       inset: 0;
       width: 100%;
-      height: 100%;
+      height: 112%;
       object-fit: cover;
       filter: saturate(.92) contrast(1.02);
+      will-change: transform;
     }
 
     .hero-scrim {
@@ -868,12 +881,60 @@
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: opacity .7s ease, transform .7s ease;
+      transition: opacity .8s cubic-bezier(.16, .7, .2, 1), transform .8s cubic-bezier(.16, .7, .2, 1);
     }
 
     .reveal.in {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ---------- custom cursor (desktop only, see .has-custom-cursor) ---------- */
+    .cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--oxide);
+      pointer-events: none;
+      z-index: 2000;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity .25s ease, width .35s cubic-bezier(.2, .8, .2, 1), height .35s cubic-bezier(.2, .8, .2, 1), background .3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cursor-dot span {
+      opacity: 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #F4EFE3;
+      transition: opacity .2s ease;
+      white-space: nowrap;
+    }
+
+    .cursor-dot.show {
+      opacity: 1;
+    }
+
+    .cursor-dot.expand {
+      width: 60px;
+      height: 60px;
+      background: rgba(162, 58, 34, .92);
+    }
+
+    .cursor-dot.expand span {
+      opacity: 1;
+    }
+
+    .has-custom-cursor .card {
+      cursor: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -886,6 +947,10 @@
       .card {
         opacity: 1 !important;
         transform: none !important;
+      }
+
+      .cursor-dot {
+        display: none !important;
       }
     }
 
@@ -1226,6 +1291,7 @@
         <span></span><span></span><span></span>
       </button>
     </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </header>
 
   <section class="hero" id="top">
@@ -1280,9 +1346,9 @@
           <p>Guided by nature-centric design ethics, we build lasting relationships and designs that celebrate life,
             culture and coexistence with nature.</p>
           <div class="stat-row">
-            <div><strong>10+</strong><span>Years in practice</span></div>
-            <div><strong>16+</strong><span>Projects delivered</span></div>
-            <div><strong>6</strong><span>Disciplines</span></div>
+            <div><strong data-count="10" data-suffix="+">0</strong><span>Years in practice</span></div>
+            <div><strong data-count="16" data-suffix="+">0</strong><span>Projects delivered</span></div>
+            <div><strong data-count="6" data-suffix="">0</strong><span>Disciplines</span></div>
           </div>
         </div>
       </div>
@@ -1431,6 +1497,8 @@
     </div>
   </footer>
 
+  <div class="cursor-dot" id="cursorDot"><span>View</span></div>
+
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project gallery">
     <button class="lb-close" id="lbClose" aria-label="Close gallery">&times;</button>
     <div class="lb-head">
@@ -1562,13 +1630,46 @@
       // ---- header solid on scroll + hero-dark toggle ----
       var header = document.getElementById('site-header');
       var hero = document.querySelector('.hero');
+      var heroImg = document.querySelector('.hero-img');
+      var progressBar = document.getElementById('scrollProgress');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       function onScroll() {
         var y = window.scrollY;
         header.classList.toggle('solid', y > 40);
         document.body.classList.toggle('hero-dark', y < hero.offsetHeight - 90);
+        if (progressBar) {
+          var docH = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.transform = 'scaleX(' + Math.min(y / docH, 1) + ')';
+        }
       }
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      // Hero: a slow settle-zoom on load, then a gentle parallax drift as the
+      // page scrolls — a small, physical-feeling detail rather than a static image.
+      if (heroImg && !reduceMotion) {
+        var heroStart = performance.now();
+        var settleMs = 8000;
+        function tickHero(now) {
+          var t = Math.min((now - heroStart) / settleMs, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          var scale = 1.1 - 0.08 * eased;
+          var parallax = Math.min(window.scrollY * 0.14, 90);
+          heroImg.style.transform = 'scale(' + scale + ') translateY(' + parallax + 'px)';
+          if (t < 1) {
+            requestAnimationFrame(tickHero);
+          } else {
+            // settle finished — keep updating parallax only, on scroll
+            document.addEventListener('scroll', function () {
+              heroImg.style.transform = 'scale(1.02) translateY(' + Math.min(window.scrollY * 0.14, 90) + 'px)';
+            }, { passive: true });
+          }
+        }
+        requestAnimationFrame(tickHero);
+      } else if (heroImg) {
+        heroImg.style.transform = 'scale(1.02)';
+      }
 
       // ---- mobile nav ----
       var toggle = document.getElementById('navtoggle');
@@ -1746,6 +1847,31 @@
         touchX = null;
       }, { passive: true });
 
+      // ---- custom cursor over the portfolio grid (desktop only) ----
+      var canUseCustomCursor = window.matchMedia('(pointer: fine)').matches && !reduceMotion;
+      if (canUseCustomCursor) {
+        document.documentElement.classList.add('has-custom-cursor');
+        var cursorDot = document.getElementById('cursorDot');
+        var cx = 0, cy = 0, dx = 0, dy = 0;
+        document.addEventListener('mousemove', function (e) {
+          cx = e.clientX; cy = e.clientY;
+          cursorDot.classList.add('show');
+        });
+        document.addEventListener('mouseleave', function () { cursorDot.classList.remove('show'); });
+        function followCursor() {
+          dx += (cx - dx) * 0.18;
+          dy += (cy - dy) * 0.18;
+          cursorDot.style.left = dx + 'px';
+          cursorDot.style.top = dy + 'px';
+          requestAnimationFrame(followCursor);
+        }
+        requestAnimationFrame(followCursor);
+        document.querySelectorAll('.card').forEach(function (card) {
+          card.addEventListener('mouseenter', function () { cursorDot.classList.add('expand'); });
+          card.addEventListener('mouseleave', function () { cursorDot.classList.remove('expand'); });
+        });
+      }
+
       // ---- generic reveal on scroll ----
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -1753,6 +1879,31 @@
         });
       }, { threshold: .15 });
       document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+      // ---- count-up stat numbers ----
+      var statEls = document.querySelectorAll('[data-count]');
+      if (statEls.length) {
+        var statIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            statIO.unobserve(entry.target);
+            var el = entry.target;
+            var target = parseInt(el.dataset.count, 10);
+            var suffix = el.dataset.suffix || '';
+            if (reduceMotion) { el.textContent = target + suffix; return; }
+            var start = performance.now();
+            var dur = 1400;
+            function step(now) {
+              var t = Math.min((now - start) / dur, 1);
+              var eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = Math.round(eased * target) + suffix;
+              if (t < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          });
+        }, { threshold: .6 });
+        statEls.forEach(function (el) { statIO.observe(el); });
+      }
     })();
   </script>
 
