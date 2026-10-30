@@ -40,7 +40,7 @@
   --maxw: 1600px;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --ease-soft: cubic-bezier(.4, 0, .2, 1);
-  --nav-h: 76px;
+  --nav-h: 84px;
 }
 
 /* --------------------------------------------------------------------------
@@ -183,7 +183,7 @@ html.anim .wipe.in img { transform: scale(1); }
 .nav {
   position: fixed; inset: 0 0 auto 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-  padding: 1.5rem var(--gutter);
+  padding: 1.15rem var(--gutter);
   transition: background .6s var(--ease), padding .6s var(--ease), box-shadow .6s var(--ease);
 }
 .nav.solid {
@@ -191,11 +191,11 @@ html.anim .wipe.in img { transform: scale(1); }
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   box-shadow: inset 0 -1px 0 var(--line-soft);
-  padding-block: .95rem;
+  padding-block: .7rem;
 }
 
-.brand { display: flex; align-items: center; gap: .8rem; }
-.brand img { width: 34px; height: auto; }
+.brand { display: flex; align-items: center; gap: .85rem; }
+.brand img { width: 50px; height: auto; }
 .brand-text {
   font-family: var(--font-display);
   font-size: 1.1rem;
