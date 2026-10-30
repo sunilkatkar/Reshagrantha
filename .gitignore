@@ -1,0 +1,15 @@
+# Working files that must never be published or committed.
+
+# Unselected camera originals supplied alongside the curated project images
+# (including .heic, which browsers cannot display). Keep them locally, keep
+# them off the website.
+assets/img/portfolio/**/ARCHIVE/
+
+# Source documents
+*.docx
+
+# Windows / macOS cruft
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
