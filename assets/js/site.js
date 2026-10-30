@@ -418,6 +418,107 @@
     window.revealIn(detail);
   }
 
+  /* ---------------------------------------------------------- enquiry */
+  /* There is no server behind this site, so an enquiry is composed here and
+     handed to the visitor's own WhatsApp or mail client. Nothing is stored
+     and nothing is sent without them pressing send in that app. */
+  var WA_NUMBER = '919527548995';
+  var MAIL_TO = 'reshagrantha@gmail.com';
+
+  function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
+  function mailLink(subject, body) {
+    return 'mailto:' + MAIL_TO + '?subject=' + encodeURIComponent(subject) +
+      (body ? '&body=' + encodeURIComponent(body) : '');
+  }
+
+  // On a project page the enquiry should already know which project.
+  function pageProject() {
+    var h = document.querySelector('.pd-top h1');
+    return h ? h.textContent.trim() : '';
+  }
+
+  // Give every bare link an opening line, so a plain click still arrives
+  // with context instead of as "hi".
+  (function enrichLinks() {
+    var proj = pageProject();
+    var opener = proj
+      ? 'Hello Reshagrantha, I saw ' + proj + ' on your website and would like to discuss a project.'
+      : 'Hello Reshagrantha, I would like to discuss a project.';
+    var subject = proj ? 'Enquiry — ' + proj : 'Enquiry from your website';
+
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function (a) {
+      if (a.href.indexOf('text=') === -1) a.href = waLink(opener);
+    });
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+      if (a.href.indexOf('subject=') === -1) a.href = mailLink(subject, opener + '\n\n');
+    });
+  })();
+
+  var form = document.querySelector('[data-enquiry]');
+  if (form) {
+    var fields = {
+      name: form.querySelector('[name=name]'),
+      contact: form.querySelector('[name=contact]'),
+      place: form.querySelector('[name=place]'),
+      type: form.querySelector('[name=type]'),
+      message: form.querySelector('[name=message]'),
+    };
+
+    function mark(input, bad) {
+      var f = input.closest('.field');
+      if (f) f.classList.toggle('invalid', bad);
+    }
+    Object.keys(fields).forEach(function (k) {
+      fields[k].addEventListener('input', function () { mark(fields[k], false); });
+    });
+
+    function valid() {
+      var ok = true;
+      [['name', 1], ['contact', 1]].forEach(function (pair) {
+        var bad = !fields[pair[0]].value.trim();
+        mark(fields[pair[0]], bad);
+        if (bad) ok = false;
+      });
+      if (!ok) {
+        var first = form.querySelector('.field.invalid input');
+        if (first) first.focus();
+      }
+      return ok;
+    }
+
+    function compose() {
+      var v = function (k) { return (fields[k].value || '').trim(); };
+      var lines = ['Hello Reshagrantha — enquiry from your website.', ''];
+      lines.push('Name: ' + v('name'));
+      lines.push('Contact: ' + v('contact'));
+      if (v('place')) lines.push('Location: ' + v('place'));
+      if (v('type')) lines.push('Looking for: ' + v('type'));
+      if (v('message')) lines.push('', v('message'));
+      return lines.join('\n');
+    }
+
+    function subject() {
+      var bits = ['Enquiry'];
+      if ((fields.type.value || '').trim()) bits.push(fields.type.value.trim());
+      if ((fields.place.value || '').trim()) bits.push(fields.place.value.trim());
+      return bits.join(' — ');
+    }
+
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    form.querySelectorAll('[data-send]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (!valid()) return;
+        var url = btn.dataset.send === 'whatsapp'
+          ? waLink(compose())
+          : mailLink(subject(), compose());
+        // mail opens in place; WhatsApp in a new tab so the form is not lost
+        if (btn.dataset.send === 'whatsapp') window.open(url, '_blank', 'noopener');
+        else window.location.href = url;
+      });
+    });
+  }
+
   /* ------------------------------------------------------------- misc */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
