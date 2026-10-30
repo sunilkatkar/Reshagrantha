@@ -13,6 +13,17 @@
     if (html != null) n.innerHTML = html;
     return n;
   }
+
+  /* A cover that 404s should leave a quiet empty frame, not a broken-image
+     icon and sprawling alt text. This happened for real: image paths moved
+     while browsers still held a 16-day-cached projects.js. Asset URLs are
+     versioned now, but a missing file should never look like a bug. */
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== 'IMG') return;
+    img.style.visibility = 'hidden';
+    img.alt = '';
+  }, true);
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
