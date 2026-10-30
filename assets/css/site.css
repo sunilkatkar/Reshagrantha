@@ -838,7 +838,17 @@ body.menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-4
 .enq-note {
   flex-basis: 100%;
   font-size: var(--micro); letter-spacing: .04em; color: var(--stone); line-height: 1.7;
+  margin: 0;
 }
+.enq-status {
+  flex-basis: 100%;
+  margin: .2rem 0 0;
+  font-size: .95rem; line-height: 1.6;
+  color: var(--ink-soft);
+}
+.enq-status:empty { display: none; }
+.enq-status.ok { color: #1a7f45; }
+.enq-status.warn { color: #B3402E; }
 
 .map { margin-top: clamp(3rem, 5vw, 4.5rem); border: 1px solid var(--line); aspect-ratio: 21 / 9; filter: grayscale(1) contrast(1.05); }
 .map iframe { width: 100%; height: 100%; border: 0; display: block; }

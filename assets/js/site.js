@@ -425,6 +425,22 @@
   var WA_NUMBER = '919527548995';
   var MAIL_TO = 'reshagrantha@gmail.com';
 
+  /* ---------------------------------------------------------------------
+     Enquiry delivery.
+
+     Set WEB3FORMS_KEY to the access key for reshagrantha@gmail.com and the
+     form posts straight to the inbox — the sender needs no mail client and
+     nothing is installed. Get the key at https://web3forms.com: enter the
+     address, and it is emailed back. No account, no password, free for 250
+     submissions a month. The key is public by design; it only ever lets
+     someone send mail TO this address.
+
+     Left as the placeholder below, the form silently falls back to opening
+     the visitor's own mail app, exactly as before. Either way it works.
+     --------------------------------------------------------------------- */
+  var WEB3FORMS_KEY = 'PASTE-YOUR-ACCESS-KEY-HERE';
+  var hasBackend = /^[0-9a-f-]{20,}$/i.test(WEB3FORMS_KEY);
+
   function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
   function mailLink(subject, body) {
     return 'mailto:' + MAIL_TO + '?subject=' + encodeURIComponent(subject) +
@@ -506,15 +522,63 @@
 
     form.addEventListener('submit', function (e) { e.preventDefault(); });
 
+    var status = form.querySelector('.enq-status');
+    function say(msg, kind) {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'enq-status' + (kind ? ' ' + kind : '');
+    }
+
+    function post(btn) {
+      var original = btn.innerHTML;
+      btn.disabled = true;
+      say('Sending…', '');
+
+      var v = function (k) { return (fields[k].value || '').trim(); };
+      return fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: subject(),
+          from_name: v('name'),
+          // the reply-to so a reply in the inbox goes back to the sender
+          replyto: /@/.test(v('contact')) ? v('contact') : undefined,
+          Name: v('name'),
+          Contact: v('contact'),
+          Location: v('place') || '—',
+          Looking_for: v('type') || 'Not sure yet',
+          Message: v('message') || '—',
+          Page: location.href,
+          botcheck: form.querySelector('[name=botcheck]') ? form.querySelector('[name=botcheck]').value : '',
+        }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d.success) throw new Error(d.message || 'rejected');
+          form.querySelectorAll('input, select, textarea').forEach(function (i) {
+            if (i.type !== 'hidden') i.value = '';
+          });
+          say('Thank you — your enquiry has been sent. We reply within two working days.', 'ok');
+        })
+        .catch(function () {
+          // never lose the enquiry: hand it to their mail app instead
+          say('Could not send from here — opening your mail app with the message ready.', 'warn');
+          setTimeout(function () { window.location.href = mailLink(subject(), compose()); }, 1200);
+        })
+        .then(function () { btn.disabled = false; btn.innerHTML = original; });
+    }
+
     form.querySelectorAll('[data-send]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (!valid()) return;
-        var url = btn.dataset.send === 'whatsapp'
-          ? waLink(compose())
-          : mailLink(subject(), compose());
-        // mail opens in place; WhatsApp in a new tab so the form is not lost
-        if (btn.dataset.send === 'whatsapp') window.open(url, '_blank', 'noopener');
-        else window.location.href = url;
+
+        if (btn.dataset.send === 'whatsapp') {
+          window.open(waLink(compose()), '_blank', 'noopener');
+          return;
+        }
+        if (hasBackend) post(btn);
+        else window.location.href = mailLink(subject(), compose());
       });
     });
   }
