@@ -291,69 +291,13 @@
     window.revealIn(heritage);
   }
 
-  /* ------------------------------------------------ the project index */
-  // A list of every project; hovering a row floats its cover beside the cursor.
-  function buildIndex(host, list) {
-    list.forEach(function (p, i) {
-      var a = el('a', 'idx');
-      a.href = href(p);
-      a.dataset.discipline = p.discipline;
-      a.dataset.cover = p.cover;
-      a.innerHTML =
-        '<span class="idx-n">' + pad(i + 1) + '</span>' +
-        '<span class="idx-t">' + esc(p.title) + '</span>' +
-        '<span class="idx-d">' + esc(p.discipline) + '</span>' +
-        '<span class="idx-p">' + esc(p.place || '—') + '</span>';
-      host.appendChild(a);
-    });
-
-    if (matchMedia('(hover: none)').matches) return;
-
-    var preview = el('div', 'idx-preview', '<img alt="">');
-    document.body.appendChild(preview);
-    var pimg = preview.querySelector('img');
-    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null, active = false;
-
-    function loop() {
-      cx += (tx - cx) * 0.14;
-      cy += (ty - cy) * 0.14;
-      preview.style.left = cx + 'px';
-      preview.style.top = cy + 'px';
-      raf = active ? requestAnimationFrame(loop) : null;
-    }
-
-    host.addEventListener('pointermove', function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (!raf && active) raf = requestAnimationFrame(loop);
-    });
-    host.addEventListener('pointerover', function (e) {
-      var row = e.target.closest('.idx');
-      if (!row) return;
-      pimg.src = row.dataset.cover;
-      cx = tx = e.clientX; cy = ty = e.clientY;
-      preview.style.left = cx + 'px';
-      preview.style.top = cy + 'px';
-      active = true;
-      preview.classList.add('on');
-      if (!raf) raf = requestAnimationFrame(loop);
-    });
-    host.addEventListener('pointerleave', function () {
-      active = false;
-      preview.classList.remove('on');
-    });
-  }
-
-  var indexHost = document.querySelector('[data-index-list]');
-  if (indexHost) buildIndex(indexHost, projects);
-
-  /* ------------------------------------------------- portfolio: views */
+  /* --------------------------------------------- portfolio: the grid */
   var grid = document.querySelector('[data-grid]');
   if (grid) {
     projects.forEach(function (p, i) { grid.appendChild(card(p, i + 1)); });
     window.revealIn(grid);
 
     var filterBtns = document.querySelectorAll('.filters button[data-filter]');
-    var viewBtns = document.querySelectorAll('.views button[data-view]');
     var count = document.querySelector('.filters .count');
     var current = 'All';
 
@@ -372,11 +316,6 @@
         c.classList.toggle('hide', !match);
         if (match) shown++;
       });
-      if (indexHost) {
-        indexHost.querySelectorAll('.idx').forEach(function (r) {
-          r.classList.toggle('hide', !(want === 'All' || r.dataset.discipline === want));
-        });
-      }
       if (count) count.textContent = shown + (shown === 1 ? ' project' : ' projects');
       filterBtns.forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.filter === want ? 'true' : 'false');
@@ -385,24 +324,11 @@
       window.revealIn(grid);
     }
 
-    function applyView(view) {
-      if (grid) grid.hidden = view !== 'grid';
-      if (indexHost) indexHost.hidden = view !== 'index';
-      viewBtns.forEach(function (b) {
-        b.setAttribute('aria-pressed', b.dataset.view === view ? 'true' : 'false');
-      });
-      if (view === 'grid') window.revealIn(grid);
-    }
-
     filterBtns.forEach(function (b) {
       b.addEventListener('click', function () { applyFilter(b.dataset.filter); });
     });
-    viewBtns.forEach(function (b) {
-      b.addEventListener('click', function () { applyView(b.dataset.view); });
-    });
 
     applyFilter(new URLSearchParams(location.search).get('filter') || 'All');
-    if (viewBtns.length) applyView('grid');
   }
 
   /* --------------------------------------------- project detail page */
