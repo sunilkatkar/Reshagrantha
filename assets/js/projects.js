@@ -71,13 +71,13 @@ window.PROJECTS = [
   },
   {
     "id": "gallery22",
-    "slug": "bisure-residence-pune",
-    "title": "Bisure Residence",
-    "place": "Pune",
+    "slug": "4bhk-24k-stargaze-bavdhan",
+    "title": "4BHK 24K Stargaze",
+    "place": "Bavdhan, Pune",
     "discipline": "Interior",
-    "location": "",
-    "area": "",
-    "description": "",
+    "location": "Bavdhan, Pune, Maharashtra",
+    "area": "1,412 sq ft carpet",
+    "description": "This 4BHK residence in Bavdhan embraces a simple and contemporary interior style, focusing on clean lines, balanced proportions, and functional elegance. The spaces are thoughtfully curated with paintings and art installations designed by the architect, transforming walls and corners into expressive focal points that reflect individuality and culture. Minimal finishes and carefully chosen textures enhance openness and comfort, while the integration of art lends the home a distinctive character.\nArtwork — artifact: in-house custom-made pieces crafted exclusively for the client. The hand-carved wooden Dashavatara panel narrates Vishnu's incarnations with timeless artistry, and alongside the graceful Nataraja these creations turn the home into a sanctuary of culture and identity.",
     "cover": "assets/img/portfolio/3.INTERIOR/1.BISURE/Cover.webp",
     "images": [
       "assets/img/portfolio/3.INTERIOR/1.BISURE/1.webp",
@@ -130,23 +130,6 @@ window.PROJECTS = [
       "assets/img/portfolio/10. Vaidya Interior/5.webp",
       "assets/img/portfolio/10. Vaidya Interior/6.webp",
       "assets/img/portfolio/10. Vaidya Interior/7.webp"
-    ]
-  },
-  {
-    "id": "gallery7",
-    "slug": "4bhk-residence-bavdhan",
-    "title": "4BHK Residence",
-    "place": "Bavdhan, Pune",
-    "discipline": "Interior",
-    "location": "Bavdhan, Pune, Maharashtra",
-    "area": "1,412 sq ft carpet",
-    "description": "This 4BHK residence in Bavdhan embraces a simple and contemporary interior style, focusing on clean lines, balanced proportions, and functional elegance. The spaces are thoughtfully curated with paintings and art installations designed by the architect, transforming walls and corners into expressive focal points that reflect individuality and culture. Minimal finishes and carefully chosen textures enhance openness and comfort, while the integration of art lends the home a distinctive character.\nArtwork — artifact: in-house custom-made pieces crafted exclusively for the client. The hand-carved wooden Dashavatara panel narrates Vishnu's incarnations with timeless artistry, and alongside the graceful Nataraja these creations turn the home into a sanctuary of culture and identity.",
-    "cover": "assets/img/portfolio/8. BAVDHAN - Bisure Interior/cover.webp",
-    "images": [
-      "assets/img/portfolio/8. BAVDHAN - Bisure Interior/1.webp",
-      "assets/img/portfolio/8. BAVDHAN - Bisure Interior/2.webp",
-      "assets/img/portfolio/8. BAVDHAN - Bisure Interior/3.webp",
-      "assets/img/portfolio/8. BAVDHAN - Bisure Interior/4.webp"
     ]
   },
   {
@@ -650,7 +633,7 @@ window.PROJECTS = [
   {
     "id": "gallery16",
     "slug": "rudrana-restaurant-landscape-wai",
-    "title": "Rudrana Restaurant — Landscape",
+    "title": "Rudrana Restaurant",
     "place": "Wai, Satara",
     "discipline": "Landscape",
     "location": "Wai, Dist. Satara, Maharashtra",
@@ -667,7 +650,7 @@ window.PROJECTS = [
   {
     "id": "gallery38",
     "slug": "govitri-wada-landscape-kamshet",
-    "title": "Govitri Wada Landscape",
+    "title": "Govitri Wada",
     "place": "Kamshet",
     "discipline": "Landscape",
     "location": "Kamshet, Pune, Maharashtra",
@@ -682,7 +665,7 @@ window.PROJECTS = [
   {
     "id": "gallery39",
     "slug": "sakshi-nisarg-township-landscape-wai",
-    "title": "Sakshi Nisarg Township Landscape",
+    "title": "Sakshi Nisarg Township",
     "place": "Wai, Satara",
     "discipline": "Landscape",
     "location": "Wai, Dist. Satara, Maharashtra",
@@ -697,7 +680,7 @@ window.PROJECTS = [
   {
     "id": "gallery40",
     "slug": "kuldeep-bungalow-landscape-gahunje",
-    "title": "Kuldeep Bungalow Landscape",
+    "title": "The Bungalow",
     "place": "Gahunje, Pune",
     "discipline": "Landscape",
     "location": "Gahunje, Dist. Pune, Maharashtra",
@@ -714,7 +697,7 @@ window.PROJECTS = [
   {
     "id": "gallery41",
     "slug": "2bhk-suncity-landscape-ambegaon",
-    "title": "2BHK Suncity Landscape",
+    "title": "2BHK Suncity",
     "place": "Ambegaon, Pune",
     "discipline": "Landscape",
     "location": "Ambegaon, Pune, Maharashtra",
@@ -729,11 +712,11 @@ window.PROJECTS = [
   },
   {
     "id": "gallery42",
-    "slug": "bisure-landscape-pune",
-    "title": "Bisure Landscape",
-    "place": "Pune",
+    "slug": "4bhk-24k-stargaze-landscape-bavdhan",
+    "title": "4BHK 24K Stargaze",
+    "place": "Bavdhan, Pune",
     "discipline": "Landscape",
-    "location": "Pune, Maharashtra",
+    "location": "Bavdhan, Pune, Maharashtra",
     "area": "",
     "description": "A landscape scheme developed alongside the interior works, extending the material language of the house into its grounds with planting, paving and shaded outdoor seating.",
     "cover": "assets/img/portfolio/4.LANDSCAPE/2.BISURE/COVER.webp",

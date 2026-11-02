@@ -734,6 +734,8 @@ body.menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-4
 .pd-back:hover, .pd-back-foot:hover { gap: 1.1rem; }
 
 .pd-back {
+  /* block-level, or the discipline label sits on the same line as it */
+  display: flex; width: fit-content;
   color: rgba(255, 255, 255, .75);
   margin-bottom: clamp(1.6rem, 4vh, 2.6rem);
   padding-bottom: .5rem;
