@@ -335,8 +335,16 @@
   var detail = document.querySelector('[data-detail]');
   if (detail) {
     var q = new URLSearchParams(location.search);
-    var key = q.get('project') || q.get('gallery') || projects[0].id;
-    var p = byId[key] || projects[0];
+    var key = q.get('project') || q.get('gallery');
+    var p = key ? byId[key] : projects[0];
+
+    /* A link to a project that no longer exists used to fall through and
+     * show the first project instead, which reads as the wrong page
+     * rather than a missing one. Send them to the index. */
+    if (!p) {
+      location.replace('portfolio.html');
+      p = projects[0];
+    }
 
     document.title = p.title + (p.place ? ' — ' + p.place : '') + ' | Reshagrantha Architects';
     var meta = document.querySelector('meta[name="description"]');

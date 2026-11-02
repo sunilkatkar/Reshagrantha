@@ -78,21 +78,21 @@ window.PROJECTS = [
     "location": "Bavdhan, Pune, Maharashtra",
     "area": "1,412 sq ft carpet",
     "description": "This 4BHK residence in Bavdhan embraces a simple and contemporary interior style, focusing on clean lines, balanced proportions, and functional elegance. The spaces are thoughtfully curated with paintings and art installations designed by the architect, transforming walls and corners into expressive focal points that reflect individuality and culture. Minimal finishes and carefully chosen textures enhance openness and comfort, while the integration of art lends the home a distinctive character.\nArtwork — artifact: in-house custom-made pieces crafted exclusively for the client. The hand-carved wooden Dashavatara panel narrates Vishnu's incarnations with timeless artistry, and alongside the graceful Nataraja these creations turn the home into a sanctuary of culture and identity.",
-    "cover": "assets/img/portfolio/3.INTERIOR/1.BISURE/Cover.webp",
+    "cover": "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/Cover.webp",
     "images": [
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/1.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/2.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/3.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/4.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2181.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2183.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2190.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2207.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2209.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2214.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2235.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2244.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/POTRAIT -SELECTED/IMG_2274.webp"
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/1.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/2.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/3.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/4.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2181.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2183.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2190.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2207.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2209.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2214.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2235.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2244.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/POTRAIT -SELECTED/IMG_2274.webp"
     ]
   },
   {
@@ -679,19 +679,19 @@ window.PROJECTS = [
   },
   {
     "id": "gallery40",
-    "slug": "kuldeep-bungalow-landscape-gahunje",
+    "slug": "the-bungalow-landscape-gahunje",
     "title": "The Bungalow",
     "place": "Gahunje, Pune",
     "discipline": "Landscape",
     "location": "Gahunje, Dist. Pune, Maharashtra",
     "area": "3,149 sq ft",
     "description": "The design focuses on strengthening the connection between indoor and outdoor living through lush greenery, shaded courtyards, and thoughtfully planned recreational areas. Curvilinear pathways guide movement across the site, connecting the entrance, garden seating space, and private outdoor areas. The landscape adopts sustainable design principles through rainwater harvesting, permeable paving, efficient irrigation, and low-maintenance native species.",
-    "cover": "assets/img/portfolio/4.LANDSCAPE/4.KULDEEP BUNGALOW/0_COVER IMAGE.webp",
+    "cover": "assets/img/portfolio/4.LANDSCAPE/4.THE BUNGALOW/0_COVER IMAGE.webp",
     "images": [
-      "assets/img/portfolio/4.LANDSCAPE/4.KULDEEP BUNGALOW/1.webp",
-      "assets/img/portfolio/4.LANDSCAPE/4.KULDEEP BUNGALOW/2.webp",
-      "assets/img/portfolio/4.LANDSCAPE/4.KULDEEP BUNGALOW/3.webp",
-      "assets/img/portfolio/4.LANDSCAPE/4.KULDEEP BUNGALOW/4.webp"
+      "assets/img/portfolio/4.LANDSCAPE/4.THE BUNGALOW/1.webp",
+      "assets/img/portfolio/4.LANDSCAPE/4.THE BUNGALOW/2.webp",
+      "assets/img/portfolio/4.LANDSCAPE/4.THE BUNGALOW/3.webp",
+      "assets/img/portfolio/4.LANDSCAPE/4.THE BUNGALOW/4.webp"
     ]
   },
   {
@@ -719,16 +719,16 @@ window.PROJECTS = [
     "location": "Bavdhan, Pune, Maharashtra",
     "area": "",
     "description": "A landscape scheme developed alongside the interior works, extending the material language of the house into its grounds with planting, paving and shaded outdoor seating.",
-    "cover": "assets/img/portfolio/4.LANDSCAPE/2.BISURE/COVER.webp",
+    "cover": "assets/img/portfolio/4.LANDSCAPE/2.24K STARGAZE/COVER.webp",
     "images": [
-      "assets/img/portfolio/4.LANDSCAPE/2.BISURE/1.webp",
-      "assets/img/portfolio/4.LANDSCAPE/2.BISURE/2.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/LANDSCAPE - SELECTED/IMG_1130.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/LANDSCAPE - SELECTED/IMG_2195.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/LANDSCAPE - SELECTED/IMG_2203.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/LANDSCAPE - SELECTED/IMG_2231.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/LANDSCAPE - SELECTED/IMG_2236.webp",
-      "assets/img/portfolio/3.INTERIOR/1.BISURE/LANDSCAPE - SELECTED/IMG_2250.webp"
+      "assets/img/portfolio/4.LANDSCAPE/2.24K STARGAZE/1.webp",
+      "assets/img/portfolio/4.LANDSCAPE/2.24K STARGAZE/2.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/LANDSCAPE - SELECTED/IMG_1130.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/LANDSCAPE - SELECTED/IMG_2195.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/LANDSCAPE - SELECTED/IMG_2203.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/LANDSCAPE - SELECTED/IMG_2231.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/LANDSCAPE - SELECTED/IMG_2236.webp",
+      "assets/img/portfolio/3.INTERIOR/1.24K STARGAZE/LANDSCAPE - SELECTED/IMG_2250.webp"
     ]
   }
 ];
