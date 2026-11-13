@@ -398,16 +398,21 @@
     var inner = el('div', 'pd-gallery');
 
     /* The hero crops the cover to fill the screen, so show it again here,
-     * uncropped, as the first photograph. Skip it if it already appears. */
-    var shots = p.images.slice();
-    if (p.cover && shots.indexOf(p.cover) === -1) shots.unshift(p.cover);
+     * uncropped, as the first photograph. Skip it if it already appears.
+     * Not named 'shots': the lightbox has a var of that name in this same
+     * function scope, and reassigns it every time it opens. */
+    var gallery = p.images.slice();
+    if (p.cover && gallery.indexOf(p.cover) === -1) gallery.unshift(p.cover);
 
-    shots.forEach(function (src, i) {
+    /* built once, so the handler never rebuilds it from mutated state */
+    var lbList = gallery.map(function (src) { return { src: src, alt: p.title }; });
+
+    gallery.forEach(function (src, i) {
       var fig = el('figure', 'pd-shot wipe' + (i % 3 === 0 ? '' : ' half'));
       fig.innerHTML = '<img src="' + esc(src) + '" alt="' + esc(p.title) + ' — image ' + (i + 1) +
         '" loading="lazy" decoding="async">';
       fig.addEventListener('click', function () {
-        window.openLightbox(shots.map(function (s) { return { src: s, alt: p.title }; }), i);
+        window.openLightbox(lbList, i);
       });
       inner.appendChild(fig);
     });

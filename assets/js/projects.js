@@ -15,7 +15,7 @@ window.PROJECTS = [
     "place": "Baner, Pune",
     "discipline": "Interior",
     "location": "Baner, Pune, Maharashtra",
-    "area": "1,500 sq ft",
+    "area": "2,000 sq ft",
     "description": "Inspired by Japanese design philosophy, this home embraces simplicity, balance and mindful living. Natural materials, warm wooden textures, subtle detailing and a soothing neutral palette come together to create spaces that feel calm, uncluttered and effortlessly elegant. Every element is thoughtfully composed to bring harmony between aesthetics and functionality.",
     "cover": "assets/img/portfolio/3.INTERIOR/3.4BHK - BANER/0_COVER IMAGE.webp",
     "images": [
