@@ -169,8 +169,26 @@
     lb.querySelector('.lb-close').addEventListener('click', closeLb);
     lb.querySelector('.lb-prev').addEventListener('click', function () { show(at - 1); });
     lb.querySelector('.lb-next').addEventListener('click', function () { show(at + 1); });
+    /* The stage image fills the stage, with the photo letterboxed inside it
+     * by object-fit, so a click beside a portrait photo lands on the img
+     * rather than the backdrop. Work out where the photo actually is. */
+    function overPhoto(e) {
+      var nw = lbImg.naturalWidth, nh = lbImg.naturalHeight;
+      if (!nw || !nh) return true;
+      var r = lbImg.getBoundingClientRect();
+      var cs = getComputedStyle(lbImg);
+      var pl = parseFloat(cs.paddingLeft), pr = parseFloat(cs.paddingRight);
+      var pt = parseFloat(cs.paddingTop), pb = parseFloat(cs.paddingBottom);
+      /* object-fit works inside the content box, so the padding comes off first */
+      var cw = r.width - pl - pr, ch = r.height - pt - pb;
+      var scale = Math.min(cw / nw, ch / nh);
+      var w = nw * scale, h = nh * scale;
+      var x = r.left + pl + (cw - w) / 2, y = r.top + pt + (ch - h) / 2;
+      return e.clientX >= x && e.clientX <= x + w && e.clientY >= y && e.clientY <= y + h;
+    }
     lb.querySelector('.lb-stage').addEventListener('click', function (e) {
-      if (e.target === e.currentTarget) closeLb();
+      if (e.target === e.currentTarget) { closeLb(); return; }
+      if (e.target === lbImg && !overPhoto(e)) closeLb();
     });
     addEventListener('keydown', function (e) {
       if (!lb.classList.contains('open')) return;
