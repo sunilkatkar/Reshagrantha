@@ -33,14 +33,15 @@ var WEB3FORMS_KEY = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
 ## 3. Update the cache-busting hash
 
 The HTML points at `site.js?v=<hash>`. If that hash is not updated, returning
-visitors keep the old script for up to 16 days. Either regenerate the pages
-with the page generator, or do it by hand:
+visitors keep the old script for up to 16 days. Run:
 
 ```bash
-node -e "console.log(require('crypto').createHash('md5').update(require('fs').readFileSync('assets/js/site.js')).digest('hex').slice(0,8))"
+node tools/rehash.js
 ```
 
-Put that value after `site.js?v=` in all seven HTML files.
+That updates every asset link in all seven pages to match the files on disk,
+and reports anything it could not resolve. Run it after any edit under
+`assets/css` or `assets/js`, not just this one.
 
 ## 4. Commit and push
 
