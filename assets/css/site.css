@@ -902,7 +902,11 @@ footer { background: var(--ink); color: rgba(255, 255, 255, .45); padding-block:
 .lb-stage img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 7vw, 7rem);
+  /* Padding scales with the window, not just the text size: a fixed clamp
+     ate most of a short window (144px of a 344px stage), leaving the photo
+     smaller than its own thumbnail. Top clears the close button, bottom is
+     tighter since the caption sits in its own row below. */
+  padding: min(4.5rem, 9vh) min(3rem, 5vw) min(2rem, 4vh);
   object-fit: contain;
 }
 .lb-bar { display: flex; align-items: center; justify-content: center; gap: 1.8rem; padding: 0 1rem 2rem; color: rgba(255, 255, 255, .7); }
